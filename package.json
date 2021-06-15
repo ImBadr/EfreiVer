@@ -1,0 +1,7 @@
+{
+  "name": "EfreiVer",
+  "version": "1.0.0",
+  "dependencies": {
+    "@symfony/webpack-encore": "^1.4.0"
+  }
+}
