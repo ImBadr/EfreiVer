@@ -11,3 +11,10 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+import { createPopper } from '@popperjs/core';
+const popcorn = document.querySelector('#popcorn');
+const tooltip = document.querySelector('#tooltip');
+createPopper(popcorn, tooltip, {
+    placement: 'right',
+});
+createPopper(popcorn, tooltip);
