@@ -17,7 +17,6 @@
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
-/node_modules/
 ###< phpunit/phpunit ###
 
 ###> symfony/webpack-encore-bundle ###

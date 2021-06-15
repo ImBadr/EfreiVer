@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit22019104193144990c1d0fbeb2aca60e
+class ComposerStaticInit9fda4e36ff28cb98b7bc884b7ccd6d6d
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -3154,10 +3154,8 @@ class ComposerStaticInit22019104193144990c1d0fbeb2aca60e
         'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Type\\CallableType' => __DIR__ . '/..' . '/sebastian/type/src/CallableType.php',
         'SebastianBergmann\\Type\\Exception' => __DIR__ . '/..' . '/sebastian/type/src/exception/Exception.php',
-        'SebastianBergmann\\Type\\FalseType' => __DIR__ . '/..' . '/sebastian/type/src/FalseType.php',
         'SebastianBergmann\\Type\\GenericObjectType' => __DIR__ . '/..' . '/sebastian/type/src/GenericObjectType.php',
         'SebastianBergmann\\Type\\IterableType' => __DIR__ . '/..' . '/sebastian/type/src/IterableType.php',
-        'SebastianBergmann\\Type\\LogicException' => __DIR__ . '/..' . '/sebastian/type/src/exception/LogicException.php',
         'SebastianBergmann\\Type\\MixedType' => __DIR__ . '/..' . '/sebastian/type/src/MixedType.php',
         'SebastianBergmann\\Type\\NullType' => __DIR__ . '/..' . '/sebastian/type/src/NullType.php',
         'SebastianBergmann\\Type\\ObjectType' => __DIR__ . '/..' . '/sebastian/type/src/ObjectType.php',
@@ -6303,9 +6301,9 @@ class ComposerStaticInit22019104193144990c1d0fbeb2aca60e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit22019104193144990c1d0fbeb2aca60e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit22019104193144990c1d0fbeb2aca60e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit22019104193144990c1d0fbeb2aca60e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9fda4e36ff28cb98b7bc884b7ccd6d6d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9fda4e36ff28cb98b7bc884b7ccd6d6d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9fda4e36ff28cb98b7bc884b7ccd6d6d::$classMap;
 
         }, null, ClassLoader::class);
     }
