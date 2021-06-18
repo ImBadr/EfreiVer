@@ -58,6 +58,8 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .enablePostCssLoader()
+    .enableVueLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -70,9 +72,10 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
 
-    .enableVueLoader()
+
+    // uncomment if you're having problems with a jQuery plugin
+    .autoProvidejQuery()
 
 ;
 
