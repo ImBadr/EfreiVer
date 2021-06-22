@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+    <div class="container my-4">
+        <main>
+            <div class="row justify-content-center g-1">
+                <div class="col-md-12 col-lg-4">
+                    <main class="form-signin">
+                        <form method="post">
+                            <div class="text-center">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        You are logged in as {{ app.user.username }}, <a
+                                                href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                {% endif %}
+                                <h1 class="h3 mb-3 fw-normal">Connectez-vous</h1>
+                            </div>
+                            <div class="form-floating my-1">
+                                <input type="text" class="form-control" id="floatingInput"
+                                       placeholder="name@example.com" name="username">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+
+                            <div class="form-floating my-2">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                       placeholder="Password" name="password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-lg btn-primary col-6 center" type="submit">Se connecter</button>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
