@@ -4,6 +4,27 @@
 
 {% block body %}
 
-
+    <index></index>
 
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        var controller_name = "{{ controller_name | raw }}"
+    </script>
+
+    {{ encore_entry_script_tags('index') }}
+    {{ parent() }}
+{% endblock %}
+
+{% block vueComponents %}
+
+    <template id="index">
+        <div>
+            ${controller}
+        </div>
+    </template>
+
+{% endblock %}
+
+

@@ -1,7 +1,11 @@
+
 import Vue from 'vue';
-import Default from './components/Default';
+import 'babel-polyfill';
+
 
 new Vue({
     el: '#app',
-    render: h => h(Default)
+    delimiters: ['${', '}'],
+    components: components,
+    data: {}
 });
