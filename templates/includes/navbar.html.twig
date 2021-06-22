@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,8 +29,22 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="d-grid gap-2 d-md-flex justify-content-center">
+                    {% if app.user %}
+                        <a class="navbar-brand text-white text-center" href="#">{{ app.user.username }}</a>
+                        <i class="navbar-brand text-white fas fa-user"></i>
+                        <a href="{{ path('app_logout') }}">
+                            <button type="button" class="btn btn-outline-secondary btn-sm px-3">Se deconnecter</button>
+                        </a>
+                    {% else %}
+                        <a href="{{ path('app_register') }}">
+                            <button type="button" class="btn btn-primary btn-sm px-3">S'enregistrer</button>
+                        </a>
+                        <a href="{{ path('app_login') }}">
+                            <button type="button" class="btn btn-outline-secondary btn-sm px-3">Se connecter</button>
+                        </a>
+                    {% endif %}
+                </div>
             </form>
         </div>
     </div>
