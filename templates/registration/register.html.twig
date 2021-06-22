@@ -7,15 +7,65 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <hr class="my-4">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="container my-4">
+        <main>
+            <div class="row justify-content-center g-1">
+                <div class="col-md-12 col-lg-4">
+                    <main class="form-signin">
+                        <form method="post">
+                            <div>
+                                <div class="text-center">
+                                    <h1 class="h3 mb-3 fw-normal">Enregistrez-vous</h1>
+                                </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                                {{ form_start(registrationForm) }}
+
+                                <div class="form-floating my-1">
+                                    {{ form_widget(registrationForm.username) }}
+                                    {{ form_label(registrationForm.username) }}
+                                    <div class="invalid-feedback">
+                                        Valid username is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating my-1">
+                                    {{ form_widget(registrationForm.email) }}
+                                    {{ form_label(registrationForm.email) }}
+                                    <div class="invalid-feedback">
+                                        Valid username is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-floating my-1">
+                                    {{ form_widget(registrationForm.plainPassword) }}
+                                    {{ form_label(registrationForm.plainPassword) }}
+                                    <div class="invalid-feedback">
+                                        Valid password is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-class col-12">
+                                    {{ form_label(registrationForm.agreeTerms) }}
+                                    {{ form_widget(registrationForm.agreeTerms) }}
+                                </div>
+
+                            </div>
+
+                            <hr class="my-4">
+
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Valider</button>
+
+                            <hr class="my-4">
+
+                            {{ form_rest(registrationForm) }}
+                            {{ form_end(registrationForm) }}
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </main>
+    </div>
+
 {% endblock %}
