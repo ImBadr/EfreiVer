@@ -1,5 +1,12 @@
 // customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
+$primary: darken(#ac8e7a, 0%);
+$secondary: darken(#917D86, 0%);
+$success: darken(#69a55d, 0%);
+$danger: darken(#f44336, 0%);
+$warning: darken(#e69525, 0%);
+$info: darken(#4E4A00, 0%);
+$light: darken(#F9F5F2, 0%);
+$dark: darken(#4E4A57, 0%);
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";

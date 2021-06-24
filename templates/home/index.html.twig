@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <div class="px-4 pt-5 text-center border-bottom">
+        <h1 class="display-4 fw-bold"><span class="badge bg-primary">EfreiVer</span></h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                <span class="badge rounded-pill bg-primary">EfreiVer</span> est une plateforme qui vous permet d'entrer en contact avec des élèves de l'Efrei qui peuvent vous apporter de l'aide ou de l'argent en échange d'un service
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                {% if app.user %}
+
+                {% else %}
+                    <a href="{{ path('app_register') }}">
+                        <button type="button" class="btn btn-primary btn-lg px-4">S'enregistrer</button>
+                    </a>
+                    <a href="{{ path('app_login') }}">
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Se connecter
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+            <div class="container px-5">
+                <img src="{{ asset('images/efrei_logo.png') }}" class="img-fluid bg-dark rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
