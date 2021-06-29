@@ -4,37 +4,85 @@
 
 {% block body %}
 
-    <main>
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Offres</h1>
+    <!-- page title -->
+    <section class="section section--last section--head">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section__wrap">
+                        <!-- section title -->
+                        <h2 class="section__title">Offres <span>({{ offres|length }} offres actuellement)</span></h2>
+                        <!-- end section title -->
+
+                        <!-- breadcrumb -->
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb__item"><a href="{{ path('home') }}">Home</a></li>
+                            <li class="breadcrumb__item breadcrumb__item--active">Offres</li>
+                        </ul>
+                        <!-- end breadcrumb -->
+                    </div>
                 </div>
             </div>
-            <div class="album py-5">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        </div>
+    </section>
+    <!-- end page title -->
+
+    <!-- section -->
+    <section class="section section--last section--catalog">
+        <div class="container">
+            <!-- catalog -->
+            <div class="row">
+
+
+                <!-- content wrap -->
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <!-- card -->
                         {% for offre in offres %}
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <img src="./images/{{ offre.images[0] }}" alt="" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                                    <div class="card-body">
-                                        <p class="card-title">{{ offre.title }}</p>
-                                        <p class="card-text">{{ offre.description|slice(0, 100) }} ...</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                            </div>
-                                            <small class="text-muted">Author : {{ offre.user.username }}</small>
-                                        </div>
+                            <div class="col-12 col-sm-6 col-xl-4">
+                                <div class="card">
+                                    <a href="" class="card__cover">
+                                        <img src="./images/{{ offre.images[0] }}" alt="">
+                                        <span class="card__rate">
+                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                             viewBox='0 0 512 512'>
+                                            <path d='M394,480a16,16,0,0,1-9.39-3L256,383.76,127.39,477a16,16,0,0,1-24.55-18.08L153,310.35,23,221.2A16,16,0,0,1,32,192H192.38l48.4-148.95a16,16,0,0,1,30.44,0l48.4,149H480a16,16,0,0,1,9.05,29.2L359,310.35l50.13,148.53A16,16,0,0,1,394,480Z'/>
+                                        </svg>
+                                        Note</span>
+                                    </a>
+
+                                    <div class="card__title">
+                                        <h3>{{ offre.title }}</h3>
+                                        <p>{{ offre.description|slice(0, 50) }}</p>
+                                        <span>$ {{ offre.price }}</span>
+                                    </div>
+
+                                    <div class="card__actions">
+                                        <button class="card__buy" type="button">View</button>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
+                        <!-- end card -->
+
+                        <!-- paginator -->
+                        <div class="col-12">
+                            <div class="paginator">
+                                <div class="paginator__counter">
+                                    {{ offres|length }} offres actuellement
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end paginator -->
+
+
                     </div>
                 </div>
+                <!-- end content wrap -->
             </div>
-        </section>
-    </main>
+            <!-- end catalog -->
+        </div>
+    </section>
+    <!-- end section -->
 
 {% endblock %}
