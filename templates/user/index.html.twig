@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <hr class="my-4">
+
+        <div class="container">
+        <table id="example" style="width:100%"  class="table caption-top">
+            <caption>Liste des utilisateurs</caption>
+            <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.username }}</td>
+
+                    <td>
+                        {% if user.roles|length < 2 %}
+                            <span class="badge rounded-pill bg-secondary">Utilisateur</span>
+                        {% else %}
+                            <span class="badge rounded-pill bg-primary">Administrateur</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if user.roles|length < 2 %}
+                            <a href="{{ path('admin_user_delete', {'id': user.id}) }}" onclick="return confirm('supprimer {{ user.username }}')">
+                                <button type="button" class="btn btn-outline-danger">Supprimer</button>
+                            </a>
+                        {% else %}
+                            <button type="button" class="btn btn-outline-danger" disabled>Supprimer</button>
+                        {% endif %}
+                    </td>
+                </tr>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Supprimer {{ user.username }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Vous êtes sur le point de supprimer définitivement ce compte
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ path('admin_user_delete', {'id': user.id}) }}"><button type="submit" class="btn btn-primary">Valider la suppresion</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="my-4">
+
+{% endblock %}

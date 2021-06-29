@@ -23,6 +23,21 @@
                             <li><a class="dropdown-item" href="#">Annonces</a></li>
                         </ul>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle text-white" href="#" id="navbarDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Gestion
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ path('admin_users') }}">Gestion des utilisateurs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </ul>
+                        </li>
+                    {% endif %}
                 {% endif %}
             </ul>
             <form class="d-flex">
