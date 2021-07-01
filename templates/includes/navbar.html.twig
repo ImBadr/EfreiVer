@@ -1,62 +1,109 @@
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('home') }}">EfreiVer</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('offre') }}">Offres</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('annonce') }}">Annonces</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Poster
+<a class="header__logo navbar-brand">
+    efreiver
+</a>
+<!-- header -->
+<header class="header">
+    <div class="header__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__content">
+                        <button class="header__menu" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+
+                        <a href="{{ path('home') }}" class="header__logo navbar-brand">
+                            <img src="images/efrei.png" alt="">
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Offre</a></li>
-                            <li><a class="dropdown-item" href="#">Annonces</a></li>
-                        </ul>
-                    </li>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle text-white" href="#" id="navbarDropdown"
-                               role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                Gestion
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ path('admin_users') }}">Gestion des utilisateurs</a></li>
+
+                        {% if app.user %}
+                            <ul class="header__nav">
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="{{ path('home') }}">Home</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="{{ path('annonce') }}">Annonces</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="{{ path('offre') }}">Postes</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Publier
+                                    </a>
+                                    <ul class="dropdown-menu header__nav-menu"
+                                        aria-labelledby="dropdownMenu2">
+                                        <li><a href="#">Offres</a></li>
+                                        <li><a href="#">Annonces</a></li>
+                                    </ul>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="header__nav-item">
+                                        <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Gestion
+                                        </a>
+                                        <ul class="dropdown-menu header__nav-menu"
+                                            aria-labelledby="dropdownMenu2">
+                                            <li><a href="{{ path('admin_users') }}">Utilisateurs</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
                             </ul>
-                        </li>
-                    {% endif %}
-                {% endif %}
-            </ul>
-            <form class="d-flex">
-                <div class="d-grid gap-2 d-md-flex justify-content-center">
-                    {% if app.user %}
-                        <a class="navbar-brand text-white text-center" href="#">
-                            {{ app.user.username }}
-                            <i class="fas fa-user-circle"></i>
-                        </a>
-                        <a href="{{ path('app_logout') }}">
-                            <button type="button" class="btn btn-outline-secondary btn-sm px-3">Se deconnecter</button>
-                        </a>
-                    {% else %}
-                        <a href="{{ path('app_register') }}">
-                            <button type="button" class="btn btn-primary btn-sm px-3">S'enregistrer</button>
-                        </a>
-                        <a href="{{ path('app_login') }}">
-                            <button type="button" class="btn btn-outline-secondary btn-sm px-3">Se connecter</button>
-                        </a>
-                    {% endif %}
+                        {% endif %}
+                        <div class="header__actions">
+                            {% if app.user %}
+                                <a class="navbar-brand text-white text-center" href="#">
+                                    {{ app.user.username }}
+                                    <i class="fas fa-user-circle"></i>
+                                </a>
+                                <a href="{{ path('app_logout') }}" class="header__login">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                         viewBox='0 0 512 512'>
+                                        <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <polyline points='288 336 368 256 288 176'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <line x1='80' y1='256' x2='352' y2='256'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                    </svg>
+                                    <span>Log out</span>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_register') }}" class="header__login">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                         viewBox='0 0 512 512'>
+                                        <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <polyline points='288 336 368 256 288 176'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <line x1='80' y1='256' x2='352' y2='256'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                    </svg>
+                                    <span>Sign out</span>
+                                </a>
+                                <a href="{{ path('app_login') }}" class="header__login">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                         viewBox='0 0 512 512'>
+                                        <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <polyline points='288 336 368 256 288 176'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <line x1='80' y1='256' x2='352' y2='256'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                    </svg>
+                                    <span>Sign in</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</nav>
+</header>
+<!-- end header -->

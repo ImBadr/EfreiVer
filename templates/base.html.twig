@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
         <!-- CSS -->
         <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
@@ -21,9 +26,6 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
     </head>
     <body>
 

@@ -21,16 +21,19 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 "attr" => [
-                    "class" => "form-control"
+                    "class" => "form-control",
+                    'placeholder' => "Username"
                 ],
             ])
             ->add('email', EmailType::class, [
                 "attr" => [
-                    "class" => "form-control"
+                    "class" => "form-control",
+                    'placeholder' => "Email"
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => "I agree to the Privacy Policy",
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
@@ -43,8 +46,10 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => array(
                     'class' => 'form-control',
-                    "autocomplete" => "new-password"
+                    "autocomplete" => "new-password",
+                    'placeholder' => "password"
                 ),
+                'label' => 'password',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
