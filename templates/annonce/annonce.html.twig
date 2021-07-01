@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce : {{ annonce.title }}{% endblock %}
+
+{% block body %}
+
+    {{ dump(annonce) }}
+
+    <!-- section -->
+    <section class="section section--first section--carousel section--bg" data-bg="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('./img/bg.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="details">
+                        <div class="details__head">
+                            <div class="details__cover">
+                                <img src="img/cards/2.jpg" alt="">
+                            </div>
+
+                            <div class="details__wrap">
+                                <h1 class="details__title">{{ annonce.title }}</h1>
+
+                                <ul class="details__list">
+                                    <li><span>Category:</span> <a href="#">{{ annonce.category.name }}</a></li>
+                                    <li><span>Created by:</span> <a href="#">{{ annonce.user.username }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="details__text">
+                            <p>{{ annonce.description }}</p>
+                        </div>
+
+                        <div class="details__gallery">
+                            <div class="details__carousel owl-carousel" id="details__carousel">
+                                <a href="img/details/1-1.jpg" >
+                                    <img src="img/details/1.jpg" alt="">
+                                </a>
+
+                                <a href="img/details/2-2.jpg" >
+                                    <img src="img/details/2.jpg" alt="">
+                                </a>
+
+                                <a href="img/details/3-3.jpg" >
+                                    <img src="img/details/3.jpg" alt="">
+                                </a>
+
+                                <a href="img/details/4-4.jpg" >
+                                    <img src="img/details/4.jpg" alt="">
+                                </a>
+
+                                <a href="img/details/5-5.jpg" >
+                                    <img src="img/details/5.jpg" alt="">
+                                </a>
+
+                                <a href="img/details/6-6.jpg" >
+                                    <img src="img/details/6.jpg" alt="">
+                                </a>
+                            </div>
+
+                            <button class="details__nav details__nav--prev" data-nav="#details__carousel" type="button">
+                                <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><polyline points='328 112 184 256 328 400' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/></svg>
+                            </button>
+                            <button class="details__nav details__nav--next" data-nav="#details__carousel" type="button">
+                                <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><polyline points='184 112 328 256 184 400' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/></svg>
+                            </button>
+                        </div>
+
+                        <div class="details__cart">
+                            <ul class="details__stat">
+                                <li><svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><path d='M394,480a16,16,0,0,1-9.39-3L256,383.76,127.39,477a16,16,0,0,1-24.55-18.08L153,310.35,23,221.2A16,16,0,0,1,32,192H192.38l48.4-148.95a16,16,0,0,1,30.44,0l48.4,149H480a16,16,0,0,1,9.05,29.2L359,310.35l50.13,148.53A16,16,0,0,1,394,480Z'/></svg> <b>4.7</b></li>
+
+                                <li><svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><path d='M336,176h40a40,40,0,0,1,40,40V424a40,40,0,0,1-40,40H136a40,40,0,0,1-40-40V216a40,40,0,0,1,40-40h40' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><polyline points='176 272 256 352 336 272' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='256' y1='48' x2='256' y2='336' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg> <b>58</b> sales</li>
+                            </ul>
+
+                            <span class="details__cart-title">PRICE</span>
+                            <div class="details__price">
+                                <span>${{ annonce.price }}</span>
+                            </div>
+
+                            <div class="details__actions">
+                                <button class="details__buy" type="button">Buy now</button>
+
+                                <button class="details__favorite" type="button">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><path d='M352.92,80C288,80,256,144,256,144s-32-64-96.92-64C106.32,80,64.54,124.14,64,176.81c-1.1,109.33,86.73,187.08,183,252.42a16,16,0,0,0,18,0c96.26-65.34,184.09-143.09,183-252.42C447.46,124.14,405.68,80,352.92,80Z' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>Add to favorites
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="details__content">
+                            <div class="row">
+                                <div class="col-12 col-xl-4 order-xl-2">
+                                    <!-- requirements -->
+                                    <div class="requirements">
+                                        <span class="requirements__title">Specification:</span>
+                                        <ul class="requirements__list">
+                                            <li><span>Category:</span> <a href="#">Mockups</a></li>
+                                            <li><span>Created by:</span> <a href="#"></a></li>
+                                            <li><span>Released:</span> March 17, 2020</li>
+                                            <li><span>Last update:</span> April 19, 2020</li>
+                                            <li><span>Version:</span> 1.1</li>
+                                            <li><span>Tags:</span> <a href="#">digital</a>, <a href="#">distribution</a>, <a href="#">esports</a>, <a href="#">gaming</a>, <a href="#">market</a>, <a href="#">marketplace</a>, <a href="#">store</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- end requirements -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+
+
+{% endblock %}

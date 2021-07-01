@@ -57,7 +57,9 @@
                                     </div>
 
                                     <div class="card__actions">
-                                        <button class="card__buy" type="button">View</button>
+                                        <a href="{{ path('view_annonce', {'id': annonce.id}) }}">
+                                            <button class="card__buy" type="button">View</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,109 @@
+<!-- NAVBAR -->
+<a class="header__logo navbar-brand">
+    efreiver
+</a>
+<!-- header -->
+<header class="header">
+    <div class="header__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__content">
+                        <button class="header__menu" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+
+                        <a href="{{ path('home') }}" class="header__logo navbar-brand">
+                            <img src="../images/efrei.png" alt="">
+                        </a>
+
+                        {% if app.user %}
+                            <ul class="header__nav">
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="{{ path('home') }}">Home</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="{{ path('annonce') }}">Annonces</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="{{ path('offre') }}">Postes</a>
+                                </li>
+                                <li class="header__nav-item">
+                                    <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Publier
+                                    </a>
+                                    <ul class="dropdown-menu header__nav-menu"
+                                        aria-labelledby="dropdownMenu2">
+                                        <li><a href="#">Offres</a></li>
+                                        <li><a href="#">Annonces</a></li>
+                                    </ul>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="header__nav-item">
+                                        <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Gestion
+                                        </a>
+                                        <ul class="dropdown-menu header__nav-menu"
+                                            aria-labelledby="dropdownMenu2">
+                                            <li><a href="{{ path('admin_users') }}">Utilisateurs</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                        <div class="header__actions">
+                            {% if app.user %}
+                                <a class="navbar-brand text-white text-center" href="#">
+                                    {{ app.user.username }}
+                                    <i class="fas fa-user-circle"></i>
+                                </a>
+                                <a href="{{ path('app_logout') }}" class="header__login">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                         viewBox='0 0 512 512'>
+                                        <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <polyline points='288 336 368 256 288 176'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <line x1='80' y1='256' x2='352' y2='256'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                    </svg>
+                                    <span>Log out</span>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_register') }}" class="header__login">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                         viewBox='0 0 512 512'>
+                                        <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <polyline points='288 336 368 256 288 176'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <line x1='80' y1='256' x2='352' y2='256'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                    </svg>
+                                    <span>Sign out</span>
+                                </a>
+                                <a href="{{ path('app_login') }}" class="header__login">
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                         viewBox='0 0 512 512'>
+                                        <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <polyline points='288 336 368 256 288 176'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                        <line x1='80' y1='256' x2='352' y2='256'
+                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                    </svg>
+                                    <span>Sign in</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- end header -->

@@ -4,34 +4,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <!-- CSS -->
-        <link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="../css/owl.carousel.min.css">
-        <link rel="stylesheet" href="../css/magnific-popup.css">
-        <link rel="stylesheet" href="../css/nouislider.min.css">
-        <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
-        <link rel="stylesheet" href="../css/paymentfont.min.css">
-        <link rel="stylesheet" href="../css/main.css">
-
-        <!-- Favicons -->
-        <link rel="icon" type="image/png" href="../icon/favicon-32x32.png" sizes="32x32">
-        <link rel="apple-touch-icon" href="../icon/favicon-32x32.png">
-
-        <meta name="description" content="">
-        <meta name="keywords" content="">
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/bootstrap-reboot.min.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/bootstrap-grid.min.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/nouislider.min.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/jquery.mCustomScrollbar.min.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/paymentfont.min.css') }}">
+        <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../css/main.css') }}">
+
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../icon/favicon-32x32.png') }}" sizes="32x32">
+        <link rel="apple-touch-icon" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../icon/favicon-32x32.png') }}">
+
+
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+
     </head>
     <body>
 
-        {% include 'includes/navbar.html.twig' %}
+        {% include 'includes/admin/navbar.html.twig' %}
         <div id="app">
             {% block body %}{% endblock %}
         </div>
-        {% include 'includes/footer.html.twig' %}
+        {% include 'includes/admin/footer.html.twig' %}
 
 
 
@@ -44,15 +47,15 @@
 
         {% block javascripts %}
             <!-- JS -->
-            <script src="../js/jquery-3.5.1.min.js"></script>
-            <script src="../js/bootstrap.bundle.min.js"></script>
-            <script src="../js/owl.carousel.min.js"></script>
-            <script src="../js/jquery.magnific-popup.min.js"></script>
-            <script src="../js/wNumb.js"></script>
-            <script src="../js/nouislider.min.js"></script>
-            <script src="../js/jquery.mousewheel.min.js"></script>
-            <script src="../js/jquery.mCustomScrollbar.min.js"></script>
-            <script src="../js/main.js"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/jquery-3.5.1.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/owl.carousel.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/jquery.magnific-popup.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/wNumb.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/nouislider.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/jquery.mousewheel.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/jquery.mCustomScrollbar.min.js') }}"></script>
+            <script src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('../js/main.js') }}"></script>
 
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('appVueJs') }}
