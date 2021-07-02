@@ -34,7 +34,7 @@
                                                         <span class="badge rounded-pill bg-primary">Administrateur</span>
                                                     {% endif %}
                                                 </td>
-                                                <td>{{ user.username }}</td>
+                                                <td>{{ user.username|capitalize }}</td>
                                                 <td>{{ user.email }}</td>
                                                 <td>
                                                     {% if user.roles|length < 2 %}

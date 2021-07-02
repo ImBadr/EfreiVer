@@ -24,7 +24,7 @@ class AnnonceController extends AbstractController
     }
 
     /**
-     * @Route("/annonces/{id}/view", name="view_annonce")
+     * @Route("/annonce/{id}/view", name="view_annonce")
      * @param Annonce $annonce
      * @return Response
      */

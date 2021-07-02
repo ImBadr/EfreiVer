@@ -41,7 +41,7 @@
                         {% for offre in offres %}
                             <div class="col-12 col-sm-6 col-xl-4">
                                 <div class="card">
-                                    <a href="" class="card__cover">
+                                    <a href="{{ path('view_offre', {'id': offre.id}) }}" class="card__cover">
                                         <img src="./images/{{ offre.images[0] }}" alt="" width='512' height='300' style="object-fit: cover">
                                         <span class="card__rate">
                                         <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
@@ -58,7 +58,9 @@
                                     </div>
 
                                     <div class="card__actions">
-                                        <button class="card__buy" type="button">View</button>
+                                        <a href="{{ path('view_offre', {'id': offre.id}) }}">
+                                            <button class="card__buy" type="button">View</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

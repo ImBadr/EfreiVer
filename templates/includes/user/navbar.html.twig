@@ -16,7 +16,7 @@
                         </button>
 
                         <a href="{{ path('home') }}" class="header__logo navbar-brand">
-                            <img src="images/efrei.png" alt="">
+                            <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset("./images/efrei.png") }}" alt="">
                         </a>
 
                         {% if app.user %}
@@ -28,7 +28,7 @@
                                     <a class="header__nav-link" href="{{ path('annonce') }}">Annonces</a>
                                 </li>
                                 <li class="header__nav-item">
-                                    <a class="header__nav-link" href="{{ path('offre') }}">Postes</a>
+                                    <a class="header__nav-link" href="{{ path('offre') }}">Offres</a>
                                 </li>
                                 <li class="header__nav-item">
                                     <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce : {{ annonce.title }}{% endblock %}
+{% block title %}Offre : {{ offre.title }}{% endblock %}
 
 {% block body %}
 
@@ -12,17 +12,17 @@
                     <div class="details">
                         <div class="details__head">
                             <div class="details__cover">
-                                <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset("./images/#{annonce.images[0]}") }}" alt="">
+                                <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset("./images/#{offre.images[0]}") }}" alt="">
                             </div>
 
                             <div class="details__wrap">
-                                <h1 class="details__title">{{ annonce.title }}</h1>
+                                <h1 class="details__title">{{ offre.title }}</h1>
 
                                 <ul class="details__list">
-                                    <li><span>Category:</span>{{ annonce.category.name|capitalize }}</li>
-                                    <li><span>Created by:</span>{{ annonce.user.username|capitalize }}</li>
-                                    <li><span>Released:</span>{{ annonce.createdAt|date("m/d/Y", "Europe/Paris") }}</li>
-                                    <li><span>Last update:</span>{{ annonce.modifiedAt|date("m/d/Y", "Europe/Paris") }}</li>
+                                    <li><span>Category:</span>{{ offre.category.name|capitalize }}</li>
+                                    <li><span>Created by:</span>{{ offre.user.username|capitalize }}</li>
+                                    <li><span>Released:</span>{{ offre.createdAt|date("m/d/Y", "Europe/Paris") }}</li>
+                                    <li><span>Last update:</span>{{ offre.modifiedAt|date("m/d/Y", "Europe/Paris") }}</li>
                                     <li>Version: </li>
                                     <li></li>
                                 </ul>
@@ -30,12 +30,12 @@
                         </div>
 
                         <div class="details__text">
-                            <p>{{ annonce.description }}</p>
+                            <p>{{ offre.description }}</p>
                         </div>
 
                         <div class="details__gallery">
                             <div class="details__carousel owl-carousel" id="details__carousel">
-                                {% for image in annonce.images %}
+                                {% for image in offre.images %}
                                     <a href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset("./images/#{image}") }}" >
                                         <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset("./images/#{image}") }}" alt="">
                                     </a>
@@ -62,11 +62,11 @@
 
                             <span class="details__cart-title">PRICE</span>
                             <div class="details__price">
-                                <span>${{ annonce.price }}</span>
+                                <span>${{ offre.price }}</span>
                             </div>
 
                             <div class="details__actions">
-                                <button class="details__buy" type="button">Contact {{ annonce.user.username|capitalize }}</button>
+                                <button class="details__buy" type="button">Contact {{ offre.user.username|capitalize }}</button>
 
                                 <button class="details__favorite" type="button">
                                     Report this publication

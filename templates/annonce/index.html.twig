@@ -41,7 +41,7 @@
                         {% for annonce in annonces %}
                             <div class="col-12 col-sm-6 col-xl-4">
                                 <div class="card">
-                                    <a href="" class="card__cover">
+                                    <a href="{{ path('view_annonce', {'id': annonce.id}) }}" class="card__cover">
                                         <img src="./images/{{ annonce.images[0] }}" alt="" width='512' height='300' style="object-fit: cover">
                                         <span class="card__rate">
                                         <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'>
@@ -53,7 +53,7 @@
                                     <div class="card__title">
                                         <h3>{{ annonce.title }}</h3>
                                         <p>{{ annonce.description|slice(0, 50) }}</p>
-                                        <span>$ {{ annonce.price }}</span>
+                                        <span>${{ annonce.price }}</span>
                                     </div>
 
                                     <div class="card__actions">
