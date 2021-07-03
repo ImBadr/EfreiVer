@@ -7,6 +7,8 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
+    <br><br><br>
+
     <!-- sign in -->
     <div class="sign section--full-bg" data-bg="img/bg2.jpg">
         <div class="container">
@@ -18,7 +20,7 @@
                             {{ form_start(registrationForm) }}
 
                             <a href="{{ path('home') }}" class="sign__logo">
-                                <img src="images/efrei.png" alt="">
+                                <img src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset("./images/efrei.png") }}" alt="">
                             </a>
 
                             <div class="sign__group">
@@ -42,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <div class="sign__group sign__group--checkbox">
+                            <div class="sign__group sign__group--checkbox" >
                                 {{ form_widget(registrationForm.agreeTerms) }}
                                 {{ form_label(registrationForm.agreeTerms) }}
                             </div>

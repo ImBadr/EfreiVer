@@ -4,6 +4,8 @@
 
 {% block body %}
 
+    <br><br><br>
+
     <!-- section -->
     <section class="section">
         <div class="container">
@@ -68,9 +70,40 @@
                             <div class="details__actions">
                                 <button class="details__buy" type="button">Contact {{ annonce.user.username|capitalize }}</button>
 
-                                <button class="details__favorite" type="button">
+                                <button class="details__favorite" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Report this publication
                                 </button>
+
+                                <br>
+
+                                {% if (message == "" and app.request.get('message') == "") %}
+                                {% else %}
+                                    <div class="alert alert-info" role="alert"><span>{{ app.request.get('message') }}</span></div>
+                                {% endif %}
+
+
+                                <!-- Modal -->
+                                {{ form_start(form) }}
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Report this publication</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ form_label(form.reason) }}
+                                                {{ form_widget(form.reason) }}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a href="{{ path('view_annonce', {'id': annonce.id}) }}"><button type="submit" class="btn btn-primary">Report</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+
                             </div>
                         </div>
 
