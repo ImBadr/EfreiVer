@@ -69,6 +69,8 @@ class Annonce
     public function __construct()
     {
         $this->reports = new ArrayCollection();
+        $this->created_at = new \DateTime();
+        $this->modified_at = new \DateTime();
     }
 
     public function getId(): ?int

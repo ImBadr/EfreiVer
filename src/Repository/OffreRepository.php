@@ -19,6 +19,22 @@ class OffreRepository extends ServiceEntityRepository
         parent::__construct($registry, Offre::class);
     }
 
+
+    /**
+     * @param $id
+     * @return Offre[]
+     */
+    public function findUserOffresById($id): array
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.user = :val')
+            ->setParameter('val', $id)
+            ->orderBy('o.modified_at', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Offre[] Returns an array of Offre objects
     //  */

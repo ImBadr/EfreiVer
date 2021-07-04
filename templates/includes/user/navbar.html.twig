@@ -35,9 +35,9 @@
                                     <ul class="dropdown-menu header__nav-menu"
                                         aria-labelledby="dropdownMenu2">
                                         <li><a href="{{ path('add_offre') }}">Publier une offres</a></li>
-                                        <li><a href="#">Publier une annonces</a></li>
-                                        <li><a href="#">Mes annonces</a></li>
-                                        <li><a href="#">Mes offres</a></li>
+                                        <li><a href="{{ path('add_annonce') }}">Publier une annonces</a></li>
+                                        <li><a href="{{ path('my_annonces') }}">Mes annonces</a></li>
+                                        <li><a href="{{ path('my_offres') }}">Mes offres</a></li>
                                     </ul>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}

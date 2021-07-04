@@ -76,7 +76,6 @@ class OffreController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/offre/{id}/edit", name="edit_offre")
      * @param Offre $offre
@@ -93,6 +92,18 @@ class OffreController extends AbstractController
 
             $offre->setModifiedAt(new \DateTime());
             $offre->setUser($this->get('security.token_storage')->getToken()->getUser());
+
+            if ($offre->getImages() != null){
+                $images = array();
+                $files = $offre->getImages();
+                foreach($files as $file)
+                {
+                    $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                    $file->move($this->getParameter('upload_directory'), $fileName);
+                    array_push($images, $fileName);
+                }
+                $offre->setImages($images);
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -119,4 +130,19 @@ class OffreController extends AbstractController
             'offre' => $offre
         ]);
     }
+
+    /**
+     * @Route("/offre/list", name="my_offres")
+     * @param OffreRepository $repository
+     * @return Response
+     */
+    public function getItems(OffreRepository $repository): Response
+    {
+        $offres = $repository->findUserOffresById($this->getUser()->getId());
+
+        return $this->render('offre/offre_list.html.twig', [
+            'offres' => $offres
+        ]);
+    }
+
 }
