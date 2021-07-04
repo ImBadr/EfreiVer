@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres{% endblock %}
+
+{% block body %}
+
+    <br><br><br>
+
+    <!-- page title -->
+    <section class="section section--last section--head" data-bg="img/bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section__wrap">
+                        <!-- section title -->
+                        <h2 class="section__title">Add new Annonce</h2>
+                        <!-- end section title -->
+
+                        <!-- breadcrumb -->
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb__item"><a href="{{ path('home') }}">Home</a></li>
+                            <li class="breadcrumb__item breadcrumb__item--active">Add new Annonce</li>
+                        </ul>
+                        <!-- end breadcrumb -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title -->
+
+    <!-- section -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-7 col-xl-8">
+                    <div class="row">
+                        <!-- section title -->
+                        <div class="col-12">
+                            <h2 class="section__title">Add new Annonce</h2>
+                        </div>
+                        <!-- end section title -->
+                        {{ form_start(form) }}
+                        <div class="col-12">
+                            <div class="form form--contacts">
+                                {{ form_widget(form.title) }}
+                                {{ form_widget(form.description) }}
+                                {{ form_widget(form.price) }}
+                                {{ form_widget(form.images) }}
+                                <br>
+                                <div class="filter__select-wrap">
+                                    {{ form_widget(form.category) }}
+                                </div>
+                                <br>
+                                <button type="submit" class="form__btn">Publish</button>
+                                {{ form_rest(form) }}
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end section -->
+
+    <br>
+
+{% endblock %}

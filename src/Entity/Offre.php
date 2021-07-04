@@ -59,6 +59,12 @@ class Offre
      */
     private $user;
 
+    public function __construct()
+    {
+        $this->created_at = new \DateTime();
+        $this->modified_at = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

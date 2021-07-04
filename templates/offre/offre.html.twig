@@ -69,37 +69,6 @@
 
                             <div class="details__actions">
                                 <button class="details__buy" type="button">Contact {{ offre.user.username|capitalize }}</button>
-
-                                <button class="details__favorite" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Report this publication
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Report this publication</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Select a reason</option>
-                                                    <option value="contains plagiarized content">contains plagiarized content</option>
-                                                    <option value="contains offensive language">contains offensive language</option>
-                                                    <option value="contains pornographic content">contains pornographic content</option>
-                                                    <option value="scam">scam</option>
-                                                    <option value="service not performed">service not performed</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a href="{{ path('report_offre', {'id': offre.id}) }}"><button type="button" class="btn btn-primary">Report</button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 

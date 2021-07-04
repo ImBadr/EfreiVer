@@ -30,12 +30,14 @@
                                 <li class="header__nav-item">
                                     <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Publier
+                                        Publications
                                     </a>
                                     <ul class="dropdown-menu header__nav-menu"
                                         aria-labelledby="dropdownMenu2">
-                                        <li><a href="#">Offres</a></li>
-                                        <li><a href="#">Annonces</a></li>
+                                        <li><a href="{{ path('add_offre') }}">Publier une offres</a></li>
+                                        <li><a href="#">Publier une annonces</a></li>
+                                        <li><a href="#">Mes annonces</a></li>
+                                        <li><a href="#">Mes offres</a></li>
                                     </ul>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
@@ -47,6 +49,7 @@
                                         <ul class="dropdown-menu header__nav-menu"
                                             aria-labelledby="dropdownMenu2">
                                             <li><a href="{{ path('admin_users') }}">Utilisateurs</a></li>
+                                            <li><a href="{{ path('admin_report') }}">Reports</a></li>
                                         </ul>
                                     </li>
                                 {% endif %}
