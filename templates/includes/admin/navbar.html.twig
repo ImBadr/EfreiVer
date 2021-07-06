@@ -60,8 +60,8 @@
                         {% endif %}
                         <div class="header__actions">
                             {% if app.user %}
-                                <a class="navbar-brand text-white text-center" href="#">
-                                    {{ app.user.username }}
+                                <a class="navbar-brand text-primary text-center" href="#">
+                                    {{ app.user.username|capitalize }}
                                     <i class="fas fa-user-circle"></i>
                                 </a>
                                 <a href="{{ path('app_logout') }}" class="header__login">
