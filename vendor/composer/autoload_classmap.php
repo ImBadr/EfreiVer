@@ -18,6 +18,7 @@ return array(
     'App\\Entity\\Offre' => $baseDir . '/src/Entity/Offre.php',
     'App\\Entity\\Report' => $baseDir . '/src/Entity/Report.php',
     'App\\Entity\\User' => $baseDir . '/src/Entity/User.php',
+    'App\\Form\\AnnonceType' => $baseDir . '/src/Form/AnnonceType.php',
     'App\\Form\\OffreType' => $baseDir . '/src/Form/OffreType.php',
     'App\\Form\\RegistrationFormType' => $baseDir . '/src/Form/RegistrationFormType.php',
     'App\\Form\\ReportType' => $baseDir . '/src/Form/ReportType.php',

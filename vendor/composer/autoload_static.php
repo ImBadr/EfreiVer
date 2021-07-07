@@ -614,6 +614,7 @@ class ComposerStaticInit9fda4e36ff28cb98b7bc884b7ccd6d6d
         'App\\Entity\\Offre' => __DIR__ . '/../..' . '/src/Entity/Offre.php',
         'App\\Entity\\Report' => __DIR__ . '/../..' . '/src/Entity/Report.php',
         'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
+        'App\\Form\\AnnonceType' => __DIR__ . '/../..' . '/src/Form/AnnonceType.php',
         'App\\Form\\OffreType' => __DIR__ . '/../..' . '/src/Form/OffreType.php',
         'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Form\\ReportType' => __DIR__ . '/../..' . '/src/Form/ReportType.php',

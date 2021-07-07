@@ -30,7 +30,7 @@
                                     {% for annonce in annonces %}
                                         <tr>
                                             <td>{{ annonce.title }}</td>
-                                            <td>{{ annonce.price }}</td>
+                                            <td>${{ annonce.price }}</td>
                                             <td>{{ annonce.createdAt|date("m/d/Y", "Europe/Paris") }}</td>
                                             <td>{{ annonce.modifiedAt|date("m/d/Y", "Europe/Paris") }}</td>
                                             <td>{{ annonce.description|slice(0, 50) }}</td>
