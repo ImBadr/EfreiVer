@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="details__actions">
-                                <button class="details__buy" type="button">Contact {{ offre.user.username|capitalize }}</button>
+                                <a class="details__buy" href="{{ path('conversation_create', {'id': offre.user.id}) }}">Contact {{ offre.user.username|capitalize }}</a>
                             </div>
                         </div>
 

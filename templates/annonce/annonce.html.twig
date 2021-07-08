@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="details__actions">
-                                <button class="details__buy" type="button">Contact {{ annonce.user.username|capitalize }}</button>
+                                <a class="details__buy" href="{{ path('conversation_create', {'id': annonce.user.id}) }}">Contact {{ annonce.user.username|capitalize }}</a>
 
                                 <button class="details__favorite" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     Report this publication

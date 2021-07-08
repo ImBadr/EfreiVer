@@ -73,40 +73,32 @@ class ConversationController extends AbstractController
     }
 
     /**
-     * @Route("/conversation", name="conversation_create", methods="POST")
+     * @Route("/start/{id}", name="conversation_create", methods="GET")
      */
-    public function create(Request $request, SerializerInterface $serializer): Response {
+    public function go(int $id, Request $request, SerializerInterface $serializer) {
+        $sender = $this->get('security.token_storage')->getToken()->getUser();
+
         $em = $this->getDoctrine()->getManager();
-        $senderId = $request->request->get("sender");
-        $receiverId = $request->request->get("receiver");
-
-        $sender = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($senderId);
-
         $receiver = $this->getDoctrine()
             ->getRepository(User::class)
-            ->find($receiverId);
+            ->find($id);
 
         if(!$sender || !$receiver) {
-            return new JsonResponse(["error" => "Je connais pas c'est quoi"]);
+            return new JsonResponse(["error" => "error"]);
         }
 
         $conversation = $this->getDoctrine()
             ->getRepository(Conversation::class)
             ->hasConversation($sender, $receiver);
 
-        var_dump($conversation);
-        exit();
-
-        $conversation = new Conversation();
-        $conversation->setSender($sender);
-        $conversation->setReceiver($receiver);
-        $em->persist($conversation);
-        $em->flush();
-
-
-        $serializer = $serializer->serialize($conversation, 'json', SerializationContext::create()->setGroups(['messagerie']));
-        return new JsonResponse(json_decode($serializer));
+        if(count($conversation) == 0){
+            $conversation = new Conversation();
+            $conversation->setSender($sender);
+            $conversation->setReceiver($receiver);
+            $em->persist($conversation);
+            $em->flush();
+        }
+        
+        return $this->redirectToRoute('conversation');
     }
 }

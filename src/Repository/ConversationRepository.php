@@ -21,9 +21,10 @@ class ConversationRepository extends ServiceEntityRepository
     }
 
     public function hasConversation(?User $user1, ?User $user2){
-        return $this->createQueryBuilder('cat')
-            ->andWhere('cat.name LIKE :searchTerm OR cat.iconKey LIKE :searchTerm')
-            ->setParameter('searchTerm', '%'.$term.'%')
+        return $this->createQueryBuilder('conv')
+           ->andWhere('conv.sender = :user1 AND conv.receiver = :user2 OR conv.sender = :user2 AND conv.receiver = :user1')
+            ->setParameter('user1', $user1)
+            ->setParameter('user2', $user2)
             ->getQuery()
             ->execute();
     }
