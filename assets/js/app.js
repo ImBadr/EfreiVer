@@ -1,11 +1,24 @@
+import Vue from "vue";
+import "babel-polyfill";
+import "./conversations/plugins/bus";
+import connector from "./conversations/plugins/connector";
+import "./conversations/plugins/bus";
+import "./conversations/plugins/modal";
+import "./conversations/plugins/notif";
+import "./conversations/components/sidebar";
+import "material-icons/iconfont/material-icons.css";
 
-import Vue from 'vue';
-import 'babel-polyfill';
-
+try {
+  if (USER_JWT_TOKEN) {
+    console.log("connector");
+    connector(USER_JWT_TOKEN);
+  }
+} catch (ignored) {}
 
 new Vue({
-    el: '#app',
-    delimiters: ['${', '}'],
-    components: components,
-    data: {}
+  el: "#app",
+  delimiters: ["${", "}"],
+  components: components,
+  data: {},
+  mounted() {},
 });

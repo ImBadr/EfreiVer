@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,11 +21,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @JMS\Groups({"messagerie", "message"})
+     * @JMS\Type("integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @JMS\Groups({"messagerie", "message"})
      */
     private $username;
 
@@ -53,6 +57,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="user", orphanRemoval=true)
      */
     private $annonces;
+    
+    /*
+     * @ORM\OneToMany(targetEntity=Conversation::class, mappedBy="sender")
+     */
+    private $conversationsAsSender;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Conversation::class, mappedBy="receiver")
+     */
+    private $conversationsAsReceiver;
 
     public function getId(): ?int
     {
@@ -76,6 +90,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->roles = array('ROLE_USER');
         $this->offres = new ArrayCollection();
         $this->annonces = new ArrayCollection();
+        $this->conversationsAsSender = new ArrayCollection();
+        $this->conversationsAsReceiver = new ArrayCollection();
     }
 
     /**
@@ -171,13 +187,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    
+    /**
+     * @return Collection|Offre[]
+     */
+    public function getConversationsAsSender(): Collection
+    {
+        return $this->conversationsAsSender;
+    }
 
-    public function removeOffre(Offre $offre): self
+    public function addConversationsAsSender(Conversation $conversationsAsSender): self
+    {
+        if (!$this->conversationsAsSender->contains($conversationsAsSender)) {
+            $this->conversationsAsSender[] = $conversationsAsSender;
+            $conversationsAsSender->setSender($this);
+        }
+
+        return $this;
+    }
+
+   public function removeOffre(Offre $offre): self
     {
         if ($this->offres->removeElement($offre)) {
             // set the owning side to null (unless already changed)
             if ($offre->getUser() === $this) {
                 $offre->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    public function removeConversationsAsSender(Conversation $conversationsAsSender): self
+    {
+        if ($this->conversationsAsSender->removeElement($conversationsAsSender)) {
+            // set the owning side to null (unless already changed)
+            if ($conversationsAsSender->getSender() === $this) {
+                $conversationsAsSender->setSender(null);
             }
         }
 
@@ -201,6 +247,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    
+    /*
+     * @return Collection|Conversation[]
+     */
+    public function getConversationsAsReceiver(): Collection
+    {
+        return $this->conversationsAsReceiver;
+    }
+
+    public function addConversationsAsReceiver(Conversation $conversationsAsReceiver): self
+    {
+        if (!$this->conversationsAsReceiver->contains($conversationsAsReceiver)) {
+            $this->conversationsAsReceiver[] = $conversationsAsReceiver;
+            $conversationsAsReceiver->setSender($this);
+        }
+
+        return $this;
+    }
 
     public function removeAnnonce(Annonce $annonce): self
     {
@@ -208,6 +272,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($annonce->getUser() === $this) {
                 $annonce->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    public function removeConversationsAsReceiver(Conversation $conversationsAsReceiver): self
+    {
+        if ($this->conversationsAsReceiver->removeElement($conversationsAsReceiver)) {
+            // set the owning side to null (unless already changed)
+            if ($conversationsAsReceiver->getSender() === $this) {
+                $conversationsAsReceiver->setSender(null);
             }
         }
 
