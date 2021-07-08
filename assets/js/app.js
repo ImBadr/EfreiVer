@@ -5,7 +5,6 @@ import connector from "./conversations/plugins/connector";
 import "./conversations/plugins/bus";
 import "./conversations/plugins/modal";
 import "./conversations/plugins/notif";
-import "./conversations/components/sidebar";
 import "material-icons/iconfont/material-icons.css";
 
 try {
